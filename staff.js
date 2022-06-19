@@ -4,7 +4,7 @@ let staff;
 
 class Staff {
 	static async injectDB(conn) {
-		staff = await conn.db("OfficeMS").collection("users")
+		staff = await conn.db("OfficeMS").collection("staff")
 	}
 
 	/**
@@ -15,7 +15,7 @@ class Staff {
 	 * @param {*} password 
 	 * @param {*} phone 
 	 */
-	static async register(id, password, name, division, rank, phone, role) {
+	static async register(id, password, name, division, rank, phone) {
 		// TODO: Check if username exists
 		const duplicate = await staff.findOne({ id: id })
 		

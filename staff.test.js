@@ -1,43 +1,43 @@
 const MongoClient = require("mongodb").MongoClient;
-const User = require("./user")
+const Staff = require("./staff")
 
-describe("User Account Management", () => {
+describe("Staff Account Management", () => {
 	let client;
 	beforeAll(async () => {
 		client = await MongoClient.connect(
 			"mongodb+srv://m001-student:m001-mongodb-basics@sandbox.xyjdt.mongodb.net/myFirstDatabase",
 			{ useNewUrlParser: true },
 		);
-		User.injectDB(client);
+		Staff.injectDB(client);
 	})
 
 	afterAll(async () => {
-		await User.delete("test");
+		await Staff.delete("test");
 		await client.close();
 	})
 
 	test("New user registration", async () => {
-		const res = await User.register("test", "password", "+010-1234-5678");
+		const res = await Staff.register("test", "password", "+010-1234-5678");
 		expect(res.insertedId).not.toBeUndefined();
 	})
 
 	test("Duplicate id", async () => {
-		const res = await User.register("test", "password")
+		const res = await Staff.register("test", "password")
 		expect(res).toEqual({ "status": "duplicate id" })
 	})
 
 	test("User login invalid id", async () => {
-		const res = await User.login("test-fail", "password")
+		const res = await Staff.login("test-fail", "password")
 		expect(res).toEqual({ "status": "invalid id" })
 	})
 
 	test("User login invalid password", async () => {
-		const res = await User.login("test", "password-fail")
+		const res = await Staff.login("test", "password-fail")
 		expect(res).toEqual({ "status": "invalid password" })
 	})
 
 	test("User login successfully", async () => {
-		const res = await User.login("test", "password")
+		const res = await Staff.login("test", "password")
 		expect(res).not.toEqual(
 			expect.objectContaining({
 				id: expect.any(String),

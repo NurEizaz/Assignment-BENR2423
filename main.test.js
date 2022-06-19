@@ -50,46 +50,6 @@ describe('Express Route Test', function () {
 		
 	})
 
-	it('register admin', async () => {
-		return request
-		.post('/register/admin')
-		.send({
-			id:"eizaz",
-			password:"eizaz",
-			name:"Nur Eizaz",
-			division:"IT",
-			rank:"Senior Manager",
-			phone:"0123456789",
-			role:"Admin" })
-		.expect('Content-Type', /json/)
-		.expect(200).then(response => {
-			expect(response.body).not.toEqual(
-				expect.objectContaining({
-					insertedId: expect.any(String),
-				})
-			);
-		});
-	});
-
-	it('register admin', async () => {
-		return request
-		.post('/register/staff')
-		.send({
-			id:"farina",
-			password:"farina",
-			name:"Nurul Farina",
-			division:"Human Resource",
-			rank:"Executive",
-			phone:"0123456781" })
-		.expect('Content-Type', /json/)
-		.expect(200).then(response => {
-			expect(response.body).not.toEqual(
-				expect.objectContaining({
-					insertedId: expect.any(String),
-				})
-			);
-		});
-	});
 
 	it('register failed', async () => {
 	})

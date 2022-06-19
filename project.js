@@ -22,5 +22,9 @@ class Project {
 	static async find(id) {
 		return project.findOne({id: id})
 	}
+
+	static async delete(id) {
+		return project.deleteOne({id: id})
+	}
 }
 module.exports = Project;
