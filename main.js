@@ -603,6 +603,8 @@ app.delete('/delete/admin',async (req,res) => {
  * @swagger
  * /delete/document:
  *   delete:
+ *     security:
+ *      - jwt: []
  *     description: Delete File
  *     tags: [Document Server]
  *     requestBody:
