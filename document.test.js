@@ -1,7 +1,7 @@
 const MongoClient = require("mongodb").MongoClient;
 const Document = require("./document")
 
-describe("Staff Account Management", () => {
+describe("Document Management", () => {
 	let client;
 	beforeAll(async () => {
 		client = await MongoClient.connect(

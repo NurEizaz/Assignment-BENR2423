@@ -1,7 +1,7 @@
 const MongoClient = require("mongodb").MongoClient;
 const Project = require("./project")
 
-describe("Staff Account Management", () => {
+describe("Project Management", () => {
 	let client;
 	beforeAll(async () => {
 		client = await MongoClient.connect(
@@ -25,6 +25,5 @@ describe("Staff Account Management", () => {
 		const res = await Project.register("test", "ProjectName", "Husna")
 		expect(res).toEqual({ "status": "duplicate id" })
 	})
-    
 
 });

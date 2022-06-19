@@ -32,7 +32,7 @@ describe('Express Route Test', function () {
 	it('login staff successfully', async () => {
 		return request
 			.post('/login/staff')
-			.send({id: 'eizaz', password: "eizaz" })
+			.send({id: 'farina', password: "farina" })
 			.expect('Content-Type', /json/)
 			.expect(200).then(response => {
 				expect(response.body).toEqual(

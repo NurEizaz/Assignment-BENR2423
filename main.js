@@ -543,7 +543,7 @@ app.get('/staff/:id', async (req, res) => {
 });
 /**
  * @swagger
- * /delete:
+ * /delete/admin:
  *   delete:
  *     security:
  *      - jwt: []
@@ -564,9 +564,38 @@ app.get('/staff/:id', async (req, res) => {
  *       401:
  *         description: Invalid id
  */
-app.delete('/delete',async (req,res) => {
+app.delete('/delete/admin',async (req,res) => {
 	console.log(req.body);
 	let buang = await User.delete(req.body.id);
+	res.json({buang})
+})
+
+/**
+ * @swagger
+ * /delete/staff:
+ *   delete:
+ *     security:
+ *      - jwt: []
+ *     description: Delete User
+ *     tags: [Staff]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema: 
+ *             type: object
+ *             properties:
+ *               id: 
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Delete successful
+ *       401:
+ *         description: Invalid id
+ */
+ app.delete('/delete/staff',async (req,res) => {
+	console.log(req.body);
+	let buang = await Staff.delete(req.body.id);
 	res.json({buang})
 })
 
