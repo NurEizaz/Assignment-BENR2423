@@ -2,6 +2,7 @@ const bcrypt = require('bcrypt');
 
 let users;
 
+
 class User {
 	static async injectDB(conn) {
 		users = await conn.db("OfficeMS").collection("users")
